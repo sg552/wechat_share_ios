@@ -1,0 +1,18 @@
+#
+# this is your module manifest and used by Titanium
+# during compilation, packaging, distribution, etc.
+#
+version: 1.0.0
+apiversion: 2
+architectures: armv7 arm64 i386 x86_64
+description: wechat
+author: Your Name
+license: Specify your license
+copyright: Copyright (c) 2015 by Your Company
+
+# these should not be edited
+name: wechat
+moduleid: cc.happysoft.wechat
+guid: 2ab35e62-3ac3-4467-aa69-b494307e60b1
+platform: iphone
+minsdk: 3.5.1.GA
