@@ -162,7 +162,7 @@
     NSLog(@"====注册成功==================================!!!!!!!!!!!");
     NSLog(@"====打印tilte结束==================================!!!!!!!!!!!");
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = @"极客美家";
+    message.title = @"极客美家：我在极客美家DIY了属于自己的房子，快来看看吧！";
     message.description = @"极客美家：我在极客美家DIY了属于自己的房子，快来看看吧！";
     [message setThumbImage:[UIImage imageNamed:@"appicon.png"]];
 
