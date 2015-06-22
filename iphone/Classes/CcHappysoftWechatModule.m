@@ -119,16 +119,18 @@
     return @"sucess";
 }
 
--(id)sendList:(NSString *)title
+//-(id)sendList:(NSString *)title
+-(id)sendList:(id)args
 {
     // example method
-
-    // example method
+    NSArray *ar = (NSArray *)args;
+    title = args[0];
 
     _scene = WXSceneSession;
     [WXApi registerApp:@"wx4e78b0cc428c005a"];
 
     NSLog(@"====注册成功==================================!!!!!!!!!!!");
+    NSLog(title);
     NSLog(@"====打印tilte结束==================================!!!!!!!!!!!");
     WXMediaMessage *message = [WXMediaMessage message];
     message.title = @"极客美家";
