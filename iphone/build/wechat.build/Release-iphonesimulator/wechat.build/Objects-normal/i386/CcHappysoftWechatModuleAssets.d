@@ -1,3 +1,3 @@
 dependencies: \
-  /workspace/module/wechat/iphone/Classes/CcHappysoftWechatModuleAssets.m \
-  /workspace/module/wechat/iphone/Classes/CcHappysoftWechatModuleAssets.h
+  /Users/wind/workspace/yuehouse_wechat_share_ios/iphone/Classes/CcHappysoftWechatModuleAssets.m \
+  /Users/wind/workspace/yuehouse_wechat_share_ios/iphone/Classes/CcHappysoftWechatModuleAssets.h

@@ -6,9 +6,9 @@ version: 1.0.0
 apiversion: 2
 architectures: armv7 arm64 i386 x86_64
 description: wechat
-author: Your Name
-license: Specify your license
-copyright: Copyright (c) 2015 by Your Company
+author: happysoft
+license: 4008455299
+copyright: Copyright (c) 2015 by Yuehouse
 
 # these should not be edited
 name: wechat

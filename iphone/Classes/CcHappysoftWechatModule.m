@@ -35,6 +35,7 @@
 	[super startup];
 
 	NSLog(@"[INFO] %@ loaded",self);
+	NSLog(@"======start up===============================");
 }
 
 -(void)shutdown:(id)sender
@@ -53,6 +54,7 @@
 {
 	// release any resources that have been retained by the module
 	[super dealloc];
+  NSLog(@"release any resources that have been retained by the module");
 }
 
 #pragma mark Internal Memory Management
@@ -72,6 +74,7 @@
 	{
 		// the first (of potentially many) listener is being added
 		// for event named 'my_event'
+    NSLog(@"the first (of potentially many) listener is being added");
 	}
 }
 
@@ -87,25 +90,23 @@
 
 #pragma Public APIs
 
-//-(id)sendMessage:(NSString *)title description:(NSString *)description image_url:(NSString *)image_url web_url:(NSString *)web_url
 -(id)sendMessage:(NSString *)title
 {
     // example method
-
     // example method
 
     _scene = WXSceneSession;
-    [WXApi registerApp:@"wx4e78b0cc428c005a"];
+    [WXApi registerApp:@"wx5760f7d9cf3822af"];
 
-    NSLog(@"====注册成功==================================!!!!!!!!!!!");
-    NSLog(@"====打印tilte结束==================================!!!!!!!!!!!");
+    NSLog(@"====注册成功xxxx==================================!!!!!!!!!!!");
+    NSLog(@"====打印tilte结束xxxx==================================!!!!!!!!!!!");
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = @"极客美家";
-    message.description = @"极客美家：你从未体验过的极致家装方式——“云装修”来了！";
+    message.title = @"悦家装";
+    message.description = @"悦家装：悦家起航！";
     [message setThumbImage:[UIImage imageNamed:@"appicon.png"]];
 
     WXWebpageObject *ext = [WXWebpageObject object];
-    ext.webpageUrl = @"http://www.mj100.com/";
+    ext.webpageUrl = @"http://www.baidu.com/";
 
     message.mediaObject = ext;
 
@@ -114,31 +115,34 @@
     req.message = message;
     req.scene = _scene;
 
-    [WXApi sendReq:req];
+    [WXApi sendReq:req]; // sendReq 请求调用后，会切到微信终端程序界面
 
-    return @"sucess";
+    return @"success";
 }
 
-//-(id)sendList:(NSString *)title
 -(id)sendList:(id)args
 {
-    // example method
-    NSArray *ar = (NSArray *)args;
-    title = args[0];
+    //读取JS中传来的参数
+    NSArray *args_array = (NSArray *)args;
+    NSString *title = args_array[0];
+    NSString *desc = args_array[1];
+    NSString *url = args_array[2];
+
 
     _scene = WXSceneSession;
-    [WXApi registerApp:@"wx4e78b0cc428c005a"];
+    [WXApi registerApp:@"wx5760f7d9cf3822af"];
 
-    NSLog(@"====注册成功==================================!!!!!!!!!!!");
+    NSLog(@"====注册成功 SendList   hahahaha==================================!!!!!!!!!!!");
     NSLog(title);
-    NSLog(@"====打印tilte结束==================================!!!!!!!!!!!");
+    NSLog(desc);
+    NSLog(@"====打印tilte结束  sendLIst==================================!!!!!!!!!!!");
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = @"极客美家";
-    message.description = @"极客美家：我在极客美家DIY了属于自己的房子，快来看看吧！";
+    message.title = title;
+    message.description = desc;
     [message setThumbImage:[UIImage imageNamed:@"appicon.png"]];
 
     WXWebpageObject *ext = [WXWebpageObject object];
-    ext.webpageUrl = @"http://www.mj100.com";
+    ext.webpageUrl = url;
 
     message.mediaObject = ext;
 
@@ -147,29 +151,37 @@
     req.message = message;
     req.scene = _scene;
 
-    [WXApi sendReq:req];
+    [WXApi sendReq:req];  // sendReq 请求调用后，会切到微信终端程序界面
 
-    return @"sucess";
+
+    return @"success";
 }
 
--(id)sendListToFriendCircle:(NSString *)title
+//-(id)sendMessage:(NSString *)title description:(NSString *)description image_url:(NSString *)image_url web_url:(NSString *)web_url
+//-(id)sendListToFriendCircle:(NSString *)title url:(NSString *)url
+-(id)sendListToFriendCircle:(id)args
 {
-    // example method
-
-    // example method
+    //读取JS中传来的参数
+    NSArray *args_array = (NSArray *)args;
+    NSString *title = args_array[0];
+    NSString *desc = args_array[1];
+    NSString *url = args_array[2];
 
     _scene = WXSceneTimeline;
-    [WXApi registerApp:@"wx4e78b0cc428c005a"];
+    [WXApi registerApp:@"wx5760f7d9cf3822af"];
 
-    NSLog(@"====注册成功==================================!!!!!!!!!!!");
+    NSLog(@"====注册成功===friendCircle===============================!!!!!!!!!!!");
+    NSLog(title);
+    NSLog(url);
     NSLog(@"====打印tilte结束==================================!!!!!!!!!!!");
     WXMediaMessage *message = [WXMediaMessage message];
-    message.title = @"极客美家";
-    message.description = @"极客美家：我在极客美家DIY了属于自己的房子，快来看看吧！";
+    message.title = title;
+    message.description = desc;
+
     [message setThumbImage:[UIImage imageNamed:@"appicon.png"]];
 
     WXWebpageObject *ext = [WXWebpageObject object];
-    ext.webpageUrl = @"http://www.mj100.com";
+    ext.webpageUrl = url;
 
     message.mediaObject = ext;
 
@@ -178,7 +190,7 @@
     req.message = message;
     req.scene = _scene;
 
-    [WXApi sendReq:req];
+    [WXApi sendReq:req];    // sendReq 请求调用后，会切到微信终端程序界面
 
     return @"sucess";
 }
@@ -210,6 +222,8 @@
         alert.tag = 1000;
         [alert show];
         [alert release];
+
+        NSLog(@"===============onReq 被调用");
     }
     else if([req isKindOfClass:[ShowMessageFromWXReq class]])
     {
